@@ -1,27 +1,14 @@
-import { fetchPhotos, fetchVideos } from "./api/mediaApi";
+import ResultGrid from "./components/ResultGrid";
 import SearchBar from "./components/SearchBar";
+import Tabs from "./components/Tabs";
 
 function App() {
 	return (
 		<>
 			<SearchBar />
-			<div>
-				<button
-					onClick={async () => {
-						const data = await fetchPhotos("Cat");
-						console.log(data.photos);
-					}}
-				>
-					Get Photo
-				</button>
-				<button
-					onClick={async () => {
-						const data = await fetchVideos("Cat");
-						console.log(data.videos);
-					}}
-				>
-					Get Video
-				</button>
+			<div className="p-5 bg-gray-100 min-h-screen">
+				<Tabs />
+				<ResultGrid />
 			</div>
 		</>
 	);
