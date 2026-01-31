@@ -23,6 +23,7 @@ const ResultGrid = () => {
 				let data = [];
 				if (activeTab == "Photo") {
 					let response = await fetchPhotos(query);
+					// console.log(response.photos);
 					data = response.photos.map((items) => ({
 						id: items.id,
 						type: "Photo",
@@ -44,7 +45,7 @@ const ResultGrid = () => {
 				if (activeTab == "Gif") {
 					console.log("Pending....");
 				}
-				console.log(data);
+				// console.log(data);
 				dispatch(setResults(data));
 			} catch (err) {
 				dispatch(setError(err.message));
