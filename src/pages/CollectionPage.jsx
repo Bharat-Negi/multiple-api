@@ -10,7 +10,7 @@ const CollectionPage = () => {
 	const collection = useSelector((state) => state.collection.items);
 	const dispatch = useDispatch();
 
-	const clearAllCollection = (item) => {
+	const clearAllCollection = () => {
 		dispatch(clearCollection());
 
 		if (collection.length > 0) {

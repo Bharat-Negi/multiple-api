@@ -10,7 +10,7 @@ export const ResultCard = ({ item }) => {
 		dispatch(addedToast());
 	};
 
-	const truncate = (text, limit = 20) =>
+	const truncate = (text, limit = 18) =>
 		text.length > limit ? text.slice(0, limit) + "..." : text;
 	return (
 		<div className="w-70 h-70 bg-white rounded relative">
@@ -35,8 +35,17 @@ export const ResultCard = ({ item }) => {
 				) : (
 					""
 				)}
+				{item.type == "Gif" ? (
+					<img
+						className="h-full w-full object-cover object-center"
+						src={item.src}
+						alt=""
+					/>
+				) : (
+					""
+				)}
 			</div>
-			<div className="absolute bottom-0 left-0 bg-white bg-opacity-75 px-5 py-2 w-full flex justify-between">
+			<div className="absolute bottom-0 left-0 bg-white bg-opacity-75 px-4 py-2 w-full flex justify-between">
 				<h1>{truncate(item.title)}</h1>
 				<button
 					onClick={() => {

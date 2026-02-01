@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPhotos, fetchVideos } from "../api/mediaApi";
+import { fetchGIF, fetchPhotos, fetchVideos } from "../api/mediaApi";
 import {
 	setLoading,
 	setError,
@@ -43,7 +43,15 @@ const ResultGrid = () => {
 					}));
 				}
 				if (activeTab == "Gif") {
-					console.log("Pending....");
+					let response = await fetchGIF(query);
+					// console.log(response.data);
+					data = response.data.map((items) => ({
+						id: items.id,
+						type: "Gif",
+						title: items.title || "Gif",
+						thumbnail: items.embed_url,
+						src: items.images.downsized_medium.url,
+					}));
 				}
 				// console.log(data);
 				dispatch(setResults(data));
