@@ -59,8 +59,8 @@ const ResultGrid = () => {
 
 	return (
 		<div className="mt-4 flex flex-wrap gap-4">
-			{results.map((items) => {
-				return <ResultCard key={items.id} items={items} />;
+			{results.map((item) => {
+				return <ResultCard key={item.id} item={item} />;
 			})}
 		</div>
 	);

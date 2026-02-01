@@ -1,13 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addCollection, addedToast } from "../redux/features/collectionSlice";
+import {
+	removeCollection,
+	removeToast,
+} from "../redux/features/collectionSlice";
 
-export const ResultCard = ({ item }) => {
+export const CollectionCard = ({ item }) => {
 	const dispatch = useDispatch();
 
-	const addToCollection = (item) => {
-		dispatch(addCollection(item));
-		dispatch(addedToast());
+	const removeFromCollection = (item) => {
+		dispatch(removeCollection(item.id));
+		dispatch(removeToast("Remove From Collection"));
 	};
 
 	const truncate = (text, limit = 20) =>
@@ -40,11 +43,11 @@ export const ResultCard = ({ item }) => {
 				<h1>{truncate(item.title)}</h1>
 				<button
 					onClick={() => {
-						addToCollection(item);
+						removeFromCollection(item);
 					}}
 					className="bg-red-700 text-white rounded cursor-pointer px-4 py-1 text-sm active:scale-95"
 				>
-					Save
+					Remove
 				</button>
 			</div>
 		</div>
